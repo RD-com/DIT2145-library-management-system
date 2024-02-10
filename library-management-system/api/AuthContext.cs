@@ -46,7 +46,7 @@ namespace library_management_system.api
 
             isLoggedIn = true;
 
-            if (true)
+            if (IsAdmin())
             {
                 dashboard = new LibrarianDashboard();
                 dashboard.Show();
@@ -75,7 +75,7 @@ namespace library_management_system.api
 
         public bool IsAdmin()
         {
-            if (role == "admin")
+            if (role.Trim() == "admin")
                 return true;
 
             return false;
