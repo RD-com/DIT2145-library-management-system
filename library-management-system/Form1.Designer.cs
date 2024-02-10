@@ -1,6 +1,6 @@
 ﻿namespace library_management_system
 {
-    partial class Form1
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,10 +31,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.txtNic = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.lnkRegister = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -69,44 +69,44 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Password";
             // 
-            // textBox1
+            // txtNic
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(12, 79);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(218, 26);
-            this.textBox1.TabIndex = 3;
+            this.txtNic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNic.Location = new System.Drawing.Point(12, 79);
+            this.txtNic.Name = "txtNic";
+            this.txtNic.Size = new System.Drawing.Size(218, 26);
+            this.txtNic.TabIndex = 3;
             // 
-            // textBox2
+            // txtPassword
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(12, 151);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(218, 26);
-            this.textBox2.TabIndex = 4;
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(12, 151);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(218, 26);
+            this.txtPassword.TabIndex = 4;
             // 
-            // button1
+            // btnLogin
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatAppearance.BorderSize = 15;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 210);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(218, 37);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnLogin.BackColor = System.Drawing.SystemColors.Control;
+            this.btnLogin.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.btnLogin.FlatAppearance.BorderSize = 15;
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Location = new System.Drawing.Point(12, 210);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(218, 37);
+            this.btnLogin.TabIndex = 5;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = false;
             // 
-            // linkLabel1
+            // lnkRegister
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(86, 269);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(71, 13);
-            this.linkLabel1.TabIndex = 6;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Register Now";
+            this.lnkRegister.AutoSize = true;
+            this.lnkRegister.Location = new System.Drawing.Point(86, 269);
+            this.lnkRegister.Name = "lnkRegister";
+            this.lnkRegister.Size = new System.Drawing.Size(71, 13);
+            this.lnkRegister.TabIndex = 6;
+            this.lnkRegister.TabStop = true;
+            this.lnkRegister.Text = "Register Now";
             // 
             // pictureBox1
             // 
@@ -117,21 +117,21 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // Form1
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(469, 338);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lnkRegister);
+            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtNic);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "i";
+            this.Name = "LoginForm";
+            this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -143,10 +143,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.TextBox txtNic;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.LinkLabel lnkRegister;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
