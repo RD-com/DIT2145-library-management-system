@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Data;
 
 namespace library_management_system.api
 {
@@ -35,7 +36,9 @@ namespace library_management_system.api
 
             connection.Open();
 
-            SqlCommand cmd = new SqlCommand(@"INSERT INTO user(name, nic, password, role, gender) VALUES(@name, @nic, @password, @role, @gender)", connection);
+            System.Console.WriteLine(gender);
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO [User] (Name, NIC, Password, Role, Gender) VALUES (@name, @nic, @password, @role, @gender)", connection);
 
             cmd.Parameters.AddWithValue("@name", name);
             cmd.Parameters.AddWithValue("@nic", nic);
@@ -45,7 +48,60 @@ namespace library_management_system.api
 
             int affected_rows = cmd.ExecuteNonQuery();
 
+            connection.Close();
+
             return affected_rows;
+        }
+
+        public DataSet get_user(int id)
+        {
+            SqlDataAdapter sqlDataAdapter;
+            DataSet ds = new DataSet();
+
+            connection.Open();
+            
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [User] WHERE id=@Id", connection);
+
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            sqlDataAdapter = new SqlDataAdapter(cmd);
+            sqlDataAdapter.Fill(ds);
+            connection.Close();
+
+            return ds;
+        }
+
+        public DataSet get_user(string nic, string password)
+        {
+            SqlDataAdapter sqlDataAdapter;
+            DataSet ds = new DataSet();
+
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [User] WHERE NIC=@nic AND Password=@password", connection);
+
+            cmd.Parameters.AddWithValue("@nic", nic);
+            cmd.Parameters.AddWithValue("@password", password);
+
+            sqlDataAdapter = new SqlDataAdapter(cmd);
+            sqlDataAdapter.Fill(ds);
+            connection.Close();
+
+            return ds;
+        }
+
+        public DataSet get_users()
+        {
+            SqlDataAdapter sqlDataAdapter;
+            DataSet ds = new DataSet();
+
+            connection.Open();
+
+            sqlDataAdapter = new SqlDataAdapter("SELECT * FROM [User]", connection);
+            sqlDataAdapter.Fill(ds);
+            connection.Close();
+
+            return ds;
         }
 
     }

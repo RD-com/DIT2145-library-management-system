@@ -62,6 +62,7 @@
             this.lnkLogin.TabIndex = 14;
             this.lnkLogin.TabStop = true;
             this.lnkLogin.Text = "Login Now";
+            this.lnkLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLogin_LinkClicked);
             // 
             // btnRegister
             // 

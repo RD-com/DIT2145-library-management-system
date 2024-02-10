@@ -1,4 +1,5 @@
-﻿using System;
+﻿using library_management_system.api;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,35 @@ namespace library_management_system
         public LoginForm()
         {
             InitializeComponent();
+        }
+
+
+        void Login(string nic, string password)
+        {
+            DataSet ds = Database.Instance.get_user(nic, password);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                MessageBox.Show("Login Success");
+            }
+            else
+            {
+                MessageBox.Show("Login Faild");
+            }
+           
+        }
+
+        private void lnkRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            RegistrationForm form = new RegistrationForm();
+            form.ShowDialog();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            var nic = txtNic.Text;
+            var password = txtPassword.Text;
+
+            Login(nic, password);
         }
     }
 }

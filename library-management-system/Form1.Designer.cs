@@ -97,6 +97,7 @@
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lnkRegister
             // 
@@ -107,6 +108,7 @@
             this.lnkRegister.TabIndex = 6;
             this.lnkRegister.TabStop = true;
             this.lnkRegister.Text = "Register Now";
+            this.lnkRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkRegister_LinkClicked);
             // 
             // pictureBox1
             // 

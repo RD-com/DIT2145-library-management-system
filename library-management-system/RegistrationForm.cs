@@ -36,6 +36,13 @@ namespace library_management_system
             var nic = txtNic.Text;
             var password = txtPassword.Text;
             var gender = rbMale.Checked ? "male" : "female";
+
+            Register(name, nic, password, gender );
+        }
+
+        private void lnkLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
