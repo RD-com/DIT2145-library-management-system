@@ -1,4 +1,5 @@
-﻿using System;
+﻿using library_management_system.api;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace library_management_system
         public LibrarianDashboard()
         {
             InitializeComponent();
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AuthContext.Instance.Logout();
         }
     }
 }

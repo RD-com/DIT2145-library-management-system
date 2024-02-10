@@ -21,7 +21,7 @@ namespace library_management_system
         
         void Register(string name, string nic, string password, string gender)
         {
-            var default_role = "admin";
+            var default_role = "user";
             int status = Database.Instance.insert_user(name, nic, password, default_role, gender);
 
             if (status > 0)
