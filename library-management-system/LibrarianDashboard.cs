@@ -34,12 +34,13 @@ namespace library_management_system
 
         void AddBook(string title, string isbn, string authors)
         {
-            Book book = new Book(isbn, title, authors);
+            Book book = new Book(isbn, title, authors, 0);
             int status = book.Save();
             if(status > 0)
             {
                 MessageBox.Show("Book Added");
                 RetriveBooks();
+                RetriveCopies();
             }
             else
             {
@@ -49,6 +50,30 @@ namespace library_management_system
 
         void AddCopy(int bookId, string publisher, string status)
         {
+            Book book = Book.Get(bookId);
+            if(book == null)
+            {
+                MessageBox.Show("Invalid Book ID");
+                return;
+            }
+
+            if (book.Copies >= 10)
+            {
+                MessageBox.Show("Maximum Copy Count!");
+                return;
+            }
+
+            book.Copies = book.Copies + 1;
+            int update_status = book.Update();
+
+            if(update_status <= 0)
+            {
+                MessageBox.Show("Error on updating book");
+                return;
+            }
+
+            RetriveBooks();
+
             Copy copy = new Copy(bookId, publisher, status);
             int rc = copy.Save();
 

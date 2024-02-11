@@ -15,20 +15,23 @@ namespace library_management_system.models
         public string ISBN { get; set; }
         public string Title { get; set; }
         public string Authors { get; set; }
+        public int Copies { get; set; }
 
-        public Book(int id, string isbn, string title, string authors)
+        public Book(int id, string isbn, string title, string authors, int copies)
         {
             Id = id;
             ISBN = isbn;
             Title = title;
             Authors = authors;
+            Copies = copies;
         }
 
-        public Book(string isbn, string title, string authors)
+        public Book(string isbn, string title, string authors,int copies)
         {
             ISBN = isbn;
             Title = title;
             Authors = authors;
+            Copies = copies;
         }
 
         public int Save()
@@ -49,6 +52,27 @@ namespace library_management_system.models
             return affectedRows;
         }
 
+        public int Update()
+        {
+            var connection = Database.Instance.GetConnection();
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand("UPDATE [Book] SET ISBN = @isbn, Title = @title, Authors = @authors, Copies = @copies WHERE Id = @id", connection);
+
+            cmd.Parameters.AddWithValue("@isbn", ISBN);
+            cmd.Parameters.AddWithValue("@title", Title);
+            cmd.Parameters.AddWithValue("@authors", Authors);
+            cmd.Parameters.AddWithValue("@copies", Copies);
+            cmd.Parameters.AddWithValue("@id", Id);
+
+            int affectedRows = cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+            return affectedRows;
+        }
+
+
         public static Book Get(int id)
         {
             var connection = Database.Instance.GetConnection();
@@ -65,8 +89,9 @@ namespace library_management_system.models
                 string isbn = reader["ISBN"].ToString();
                 string title = reader["Title"].ToString();
                 string authors = reader["Authors"].ToString();
+                int copies = Convert.ToInt32(reader["Copies"].ToString().Trim());
 
-                book = new Book(id, isbn, title, authors);
+                book = new Book(id, isbn, title, authors, copies);
             }
 
             reader.Close();
@@ -90,8 +115,9 @@ namespace library_management_system.models
                 string isbn = reader["ISBN"].ToString();
                 string title = reader["Title"].ToString();
                 string authors = reader["Authors"].ToString();
+                int copies = Convert.ToInt32(reader["Copies"].ToString());
 
-                Book book = new Book(id, isbn, title, authors);
+                Book book = new Book(id, isbn, title, authors, copies);
                 books.Add(book);
             }
 
