@@ -67,8 +67,8 @@ namespace library_management_system.api
             role = null;
             gender = null;
 
-
             dashboard.Close();
+
             loginForm.Show();
 
         }

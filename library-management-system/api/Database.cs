@@ -36,7 +36,6 @@ namespace library_management_system.api
 
             connection.Open();
 
-            System.Console.WriteLine(gender);
 
             SqlCommand cmd = new SqlCommand("INSERT INTO [User] (Name, NIC, Password, Role, Gender) VALUES (@name, @nic, @password, @role, @gender)", connection);
 
@@ -98,6 +97,56 @@ namespace library_management_system.api
             connection.Open();
 
             sqlDataAdapter = new SqlDataAdapter("SELECT * FROM [User]", connection);
+            sqlDataAdapter.Fill(ds);
+            connection.Close();
+
+            return ds;
+        }
+
+        public int insert_book(string title, string isbn, string authors)
+        {
+
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO [Book] (Title, ISBN, Authors) VALUES (@title, @isbn, @authors)", connection);
+
+            cmd.Parameters.AddWithValue("@title", title);
+            cmd.Parameters.AddWithValue("@isbn", isbn);
+            cmd.Parameters.AddWithValue("@authors", authors);
+
+            int affected_rows = cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+            return affected_rows;
+        }
+
+        public DataSet get_book(int id)
+        {
+            SqlDataAdapter sqlDataAdapter;
+            DataSet ds = new DataSet();
+
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [Book] WHERE id=@Id", connection);
+
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            sqlDataAdapter = new SqlDataAdapter(cmd);
+            sqlDataAdapter.Fill(ds);
+            connection.Close();
+
+            return ds;
+        }
+
+        public DataSet get_books()
+        {
+            SqlDataAdapter sqlDataAdapter;
+            DataSet ds = new DataSet();
+
+            connection.Open();
+
+            sqlDataAdapter = new SqlDataAdapter("SELECT * FROM [Book]", connection);
             sqlDataAdapter.Fill(ds);
             connection.Close();
 
