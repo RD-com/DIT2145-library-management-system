@@ -1,4 +1,5 @@
 ﻿using library_management_system.api;
+using library_management_system.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,14 +22,15 @@ namespace library_management_system
 
         void RetriveBooks()
         {
-            DataSet books = Database.Instance.get_books();
+            DataSet books = Book.get_books();
 
             dgvBooks.DataSource = books.Tables[0];
         }
 
         void AddBook(string title, string isbn, string authors)
         {
-            int status = Database.Instance.insert_book(title, isbn, authors);
+            Book book = new Book(isbn, title, authors);
+            int status = book.Save();
             if(status > 0)
             {
                 MessageBox.Show("Book Added");

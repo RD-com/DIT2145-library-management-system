@@ -31,6 +31,8 @@ namespace library_management_system.api
             connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=E:\\RavanaDevs\\Projects\\Other\\c#-library\\library-management-system\\library-management-system\\library-db.mdf;Integrated Security=True");
         }
 
+        public SqlConnection GetConnection() { return connection; }
+
         public int insert_user(string name, string nic, string password, string default_role, string gender)
         {
 

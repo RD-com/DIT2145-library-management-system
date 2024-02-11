@@ -1,4 +1,5 @@
 ﻿using library_management_system.api;
+using library_management_system.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,8 @@ namespace library_management_system
         void Register(string name, string nic, string password, string gender)
         {
             var default_role = "user";
-            int status = Database.Instance.insert_user(name, nic, password, default_role, gender);
+            User user = new User(name, nic, password, default_role, gender); 
+            int status = user.Save();
 
             if (status > 0)
             {
