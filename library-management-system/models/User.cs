@@ -150,5 +150,25 @@ namespace library_management_system.models
 
             return ds;
         }
+
+        public static DataSet get_user(string nic, string password)
+        {
+            SqlDataAdapter sqlDataAdapter;
+            DataSet ds = new DataSet();
+
+            var connection = Database.Instance.GetConnection();
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [User] WHERE NIC=@nic AND Password=@password", connection);
+
+            cmd.Parameters.AddWithValue("@nic", nic);
+            cmd.Parameters.AddWithValue("@password", password);
+
+            sqlDataAdapter = new SqlDataAdapter(cmd);
+            sqlDataAdapter.Fill(ds);
+            connection.Close();
+
+            return ds;
+        }
     }
 }

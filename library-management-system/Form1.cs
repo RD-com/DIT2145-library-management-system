@@ -1,4 +1,5 @@
 ﻿using library_management_system.api;
+using library_management_system.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,7 @@ namespace library_management_system
 
         void Login(string nic, string password)
         {
-            DataSet ds = Database.Instance.get_user(nic, password);
+            DataSet ds = User.get_user(nic, password);
             if (ds.Tables[0].Rows.Count > 0)
             {
                 string name = ds.Tables[0].Rows[0].Field<string>("Name");
