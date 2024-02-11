@@ -23,8 +23,13 @@ namespace library_management_system
         void RetriveBooks()
         {
             DataSet books = Book.get_books();
-
             dgvBooks.DataSource = books.Tables[0];
+        }
+
+        void RetriveCopies()
+        {
+            DataSet copies = Copy.get_copies();
+            dgvCopy.DataSource = copies.Tables[0];
         }
 
         void AddBook(string title, string isbn, string authors)
@@ -35,6 +40,22 @@ namespace library_management_system
             {
                 MessageBox.Show("Book Added");
                 RetriveBooks();
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+        }
+
+        void AddCopy(int bookId, string publisher, string status)
+        {
+            Copy copy = new Copy(bookId, publisher, status);
+            int rc = copy.Save();
+
+            if (rc > 0)
+            {
+                MessageBox.Show("Copy Added");
+                RetriveCopies();
             }
             else
             {
@@ -54,6 +75,15 @@ namespace library_management_system
             var authors = txtAuthors.Text;
 
             AddBook(title, isbn, authors );
+        }
+
+        private void btnAddCopy_Click(object sender, EventArgs e)
+        {
+            var bookId = Convert.ToInt32(txtBookID.Text);
+            var publisher = txtPublisher.Text;
+            var status = rbBorrow.Checked ? "borrowable" : "reference";
+
+            AddCopy(bookId, publisher, status );
         }
     }
 }

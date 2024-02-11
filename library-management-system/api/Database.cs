@@ -33,5 +33,20 @@ namespace library_management_system.api
 
         public SqlConnection GetConnection() { return connection; }
 
+        public DataSet GetDataSet(string query)
+        {
+            SqlDataAdapter sqlDataAdapter;
+            DataSet ds = new DataSet();
+
+            var connection = Database.Instance.GetConnection();
+            connection.Open();
+
+            sqlDataAdapter = new SqlDataAdapter(query, connection);
+            sqlDataAdapter.Fill(ds);
+            connection.Close();
+
+            return ds;
+        }
+
     }
 }

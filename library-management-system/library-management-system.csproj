@@ -76,6 +76,7 @@
       <DependentUpon>LibrarianDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="models\Book.cs" />
+    <Compile Include="models\Copy.cs" />
     <Compile Include="models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

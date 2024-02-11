@@ -103,17 +103,7 @@ namespace library_management_system.models
 
         public static DataSet get_books()
         {
-            SqlDataAdapter sqlDataAdapter;
-            DataSet ds = new DataSet();
-
-            var connection = Database.Instance.GetConnection();
-            connection.Open();
-
-            sqlDataAdapter = new SqlDataAdapter("SELECT * FROM [Book]", connection);
-            sqlDataAdapter.Fill(ds);
-            connection.Close();
-
-            return ds;
+            return Database.Instance.GetDataSet("SELECT * FROM [Book]");
         }
     }
 
