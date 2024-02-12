@@ -1,6 +1,7 @@
 ﻿using library_management_system.api;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -176,6 +177,11 @@ namespace library_management_system.models
             connection.Close();
 
             return borrows;
+        }
+
+        public static DataSet get_borrows()
+        {
+            return Database.Instance.GetDataSet("SELECT * FROM [Borrow]");
         }
 
     }

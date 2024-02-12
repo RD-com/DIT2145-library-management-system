@@ -36,6 +36,12 @@ namespace library_management_system
             dgvCopy.DataSource = copies.Tables[0];
         }
 
+        void RetriveBorrows()
+        {
+            DataSet borrows = Borrow.get_borrows();
+            dgvBorrow.DataSource = borrows.Tables[0];
+        }
+
         void AddBook(string title, string isbn, string authors)
         {
             Book book = new Book(isbn, title, authors, 0);
@@ -142,6 +148,35 @@ namespace library_management_system
             }
         }
 
+        void ReturnBook()
+        {
+            var borrowId = Convert.ToInt32(txtReturnBorrowID.Text);
+
+            Borrow toReturn = Borrow.Get(borrowId);
+
+            if (toReturn != null)
+            {
+                Copy borrowedCopy = Copy.Get(toReturn.CopyID);
+                if (borrowedCopy != null)
+                {
+                    borrowedCopy.Available = true;
+                    borrowedCopy.Update();
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+
+
+                toReturn.Returned = true;
+                toReturn.Update();
+
+                MessageBox.Show("Book Returned");
+                RetriveBorrows();
+            }
+ 
+        }
+
         #region Button Events
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -176,11 +211,19 @@ namespace library_management_system
         {
             if (e.TabPageIndex == 1)
                 RetriveCopies();
+            else if(e.TabPageIndex == 2)
+                RetriveBorrows();
         }
 
         private void btnBorrow_Click(object sender, EventArgs e)
         {
             BorrowBook();
+        }
+
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            ReturnBook();
         }
 
         #endregion

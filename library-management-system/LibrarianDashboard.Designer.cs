@@ -70,10 +70,6 @@
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnReturn = new System.Windows.Forms.Button();
-            this.txtReturnBookID = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtReturnUserID = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.dgvBorrow = new System.Windows.Forms.DataGridView();
             this.txtReturnBorrowID = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -318,7 +314,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(1030, 491);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Borrow";
+            this.tabPage3.Text = "Loan";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // groupBox3
@@ -487,10 +483,6 @@
             this.groupBox4.Controls.Add(this.txtReturnBorrowID);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.btnReturn);
-            this.groupBox4.Controls.Add(this.txtReturnBookID);
-            this.groupBox4.Controls.Add(this.label18);
-            this.groupBox4.Controls.Add(this.txtReturnUserID);
-            this.groupBox4.Controls.Add(this.label19);
             this.groupBox4.Location = new System.Drawing.Point(260, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(248, 479);
@@ -500,45 +492,13 @@
             // 
             // btnReturn
             // 
-            this.btnReturn.Enabled = false;
-            this.btnReturn.Location = new System.Drawing.Point(9, 190);
+            this.btnReturn.Location = new System.Drawing.Point(9, 85);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(233, 45);
             this.btnReturn.TabIndex = 7;
             this.btnReturn.Text = "Return";
             this.btnReturn.UseVisualStyleBackColor = true;
-            // 
-            // txtReturnBookID
-            // 
-            this.txtReturnBookID.Location = new System.Drawing.Point(9, 150);
-            this.txtReturnBookID.Name = "txtReturnBookID";
-            this.txtReturnBookID.Size = new System.Drawing.Size(233, 20);
-            this.txtReturnBookID.TabIndex = 3;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 134);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(46, 13);
-            this.label18.TabIndex = 2;
-            this.label18.Text = "Book ID";
-            // 
-            // txtReturnUserID
-            // 
-            this.txtReturnUserID.Location = new System.Drawing.Point(9, 101);
-            this.txtReturnUserID.Name = "txtReturnUserID";
-            this.txtReturnUserID.Size = new System.Drawing.Size(233, 20);
-            this.txtReturnUserID.TabIndex = 1;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 85);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(43, 13);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "User ID";
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // dgvBorrow
             // 
@@ -641,10 +601,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnReturn;
-        private System.Windows.Forms.TextBox txtReturnBookID;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox txtReturnUserID;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DataGridView dgvBorrow;
         private System.Windows.Forms.TextBox txtReturnBorrowID;
         private System.Windows.Forms.Label label13;
