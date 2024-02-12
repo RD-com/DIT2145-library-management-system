@@ -15,20 +15,23 @@ namespace library_management_system.models
         public int BookID { get; set; }
         public string Publisher { get; set; }
         public string Status { get; set; }
+        public bool Available { get; set; } = true;
 
-        public Copy(int id, int bookID, string publisher, string status)
+        public Copy(int id, int bookID, string publisher, string status, bool available)
         {
             Id = id;
             BookID = bookID;
             Publisher = publisher;
             Status = status;
+            Available = available;
         }
 
-        public Copy(int bookID, string publisher, string status)
+        public Copy(int bookID, string publisher, string status, bool available)
         {
             BookID = bookID;
             Publisher = publisher;
             Status = status;
+            Available = available;
         }
 
         public int Save()
@@ -36,11 +39,12 @@ namespace library_management_system.models
             var connection = Database.Instance.GetConnection();
             connection.Open();
 
-            SqlCommand cmd = new SqlCommand("INSERT INTO [Copy] (BookID, Publisher, Status) VALUES (@bookID, @publisher, @status)", connection);
+            SqlCommand cmd = new SqlCommand("INSERT INTO [Copy] (BookID, Publisher, Status, Available) VALUES (@bookID, @publisher, @status, @available)", connection);
 
             cmd.Parameters.AddWithValue("@bookID", BookID);
             cmd.Parameters.AddWithValue("@publisher", Publisher);
             cmd.Parameters.AddWithValue("@status", Status);
+            cmd.Parameters.AddWithValue("@available", Available);
 
             int affectedRows = cmd.ExecuteNonQuery();
 
@@ -65,8 +69,9 @@ namespace library_management_system.models
                 int bookID = Convert.ToInt32(reader["BookID"]);
                 string publisher = reader["Publisher"].ToString();
                 string status = reader["Status"].ToString();
+                bool available = Convert.ToBoolean(reader["Available"]);
 
-                copy = new Copy(id, bookID, publisher, status);
+                copy = new Copy(id, bookID, publisher, status, available);
             }
 
             reader.Close();
@@ -90,8 +95,42 @@ namespace library_management_system.models
                 int bookID = Convert.ToInt32(reader["BookID"]);
                 string publisher = reader["Publisher"].ToString();
                 string status = reader["Status"].ToString();
+                bool available = Convert.ToBoolean(reader["Available"]);
 
-                Copy copy = new Copy(id, bookID, publisher, status);
+                Copy copy = new Copy(id, bookID, publisher, status, available);
+                copies.Add(copy);
+            }
+
+            reader.Close();
+            connection.Close();
+
+            return copies;
+        }
+
+        /// <summary>
+        ///  impliment get borrowables (return list of borrowable coplies if available)
+        /// </summary>
+        /// <returns></returns>
+
+        public static List<Copy> GetBorrowable(int bookId)
+        {
+            List<Copy> copies = new List<Copy>();
+            var connection = Database.Instance.GetConnection();
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [Copy] WHERE BookID = @bookId AND Available = 1 AND Status = 'borrowable'", connection);
+            cmd.Parameters.AddWithValue("@bookId", bookId);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                int id = Convert.ToInt32(reader["Id"]);
+                int bookID = Convert.ToInt32(reader["BookID"]);
+                string publisher = reader["Publisher"].ToString();
+                string status = reader["Status"].ToString();
+                bool available = Convert.ToBoolean(reader["Available"]);
+
+                Copy copy = new Copy(id, bookID, publisher, status, available);
                 copies.Add(copy);
             }
 

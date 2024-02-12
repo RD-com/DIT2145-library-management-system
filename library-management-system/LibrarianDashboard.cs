@@ -14,6 +14,9 @@ namespace library_management_system
 {
     public partial class LibrarianDashboard : Form
     {
+        bool borrowStatus = false;
+        Borrow borrow = null;
+
         public LibrarianDashboard()
         {
             InitializeComponent();
@@ -74,7 +77,7 @@ namespace library_management_system
 
             RetriveBooks();
 
-            Copy copy = new Copy(bookId, publisher, status);
+            Copy copy = new Copy(bookId, publisher, status, true);
             int rc = copy.Save();
 
             if (rc > 0)
@@ -87,6 +90,34 @@ namespace library_management_system
                 MessageBox.Show("Error");
             }
         }
+
+        void CheckBorrow()
+        {
+            var bookId = Convert.ToInt32(txtBorrowBookId.Text);
+            var userId = Convert.ToInt32(txtBorrowUserId.Text);
+
+            var borrowDate = dateBorrow.Value.ToString();
+            var returnDate = dateReturn.Value.ToString();
+
+            var remarks = txtRemarks.Text;
+
+
+            var borrows = Borrow.GetNotReturned(userId);
+            var borrowableCopies = Copy.GetBorrowable(bookId);
+
+            if (borrows.Count < 5 && borrowableCopies.Count > 0)
+            {
+                labelStatus.Text = "OK";
+                btnBorrow.Enabled = true;
+            }
+            else
+            {
+                labelStatus.Text = "Rejected";
+                btnBorrow.Enabled = false;
+            }
+        }
+
+        #region Button Events
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -109,6 +140,18 @@ namespace library_management_system
             var status = rbBorrow.Checked ? "borrowable" : "reference";
 
             AddCopy(bookId, publisher, status );
+        }
+
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+            CheckBorrow();
+        }
+        #endregion
+
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            if (e.TabPageIndex == 1)
+                RetriveCopies();
         }
     }
 }
