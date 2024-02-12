@@ -42,19 +42,24 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvCopy = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbBorrow = new System.Windows.Forms.RadioButton();
+            this.rbRef = new System.Windows.Forms.RadioButton();
             this.btnAddCopy = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPublisher = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtBookID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rbRef = new System.Windows.Forms.RadioButton();
-            this.rbBorrow = new System.Windows.Forms.RadioButton();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dgvBorrow = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.labelStatus = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dateReturn = new System.Windows.Forms.DateTimePicker();
+            this.dateBorrow = new System.Windows.Forms.DateTimePicker();
+            this.btnBorrow = new System.Windows.Forms.Button();
             this.btnCheck = new System.Windows.Forms.Button();
             this.txtRemarks = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -62,13 +67,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtBorrowUserId = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.btnBorrow = new System.Windows.Forms.Button();
-            this.dateBorrow = new System.Windows.Forms.DateTimePicker();
-            this.dateReturn = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.labelStatus = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
@@ -76,10 +76,10 @@
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCopy)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrow)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -226,6 +226,28 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Add Copy";
             // 
+            // rbBorrow
+            // 
+            this.rbBorrow.AutoSize = true;
+            this.rbBorrow.Location = new System.Drawing.Point(50, 193);
+            this.rbBorrow.Name = "rbBorrow";
+            this.rbBorrow.Size = new System.Drawing.Size(78, 17);
+            this.rbBorrow.TabIndex = 8;
+            this.rbBorrow.TabStop = true;
+            this.rbBorrow.Text = "Borrowable";
+            this.rbBorrow.UseVisualStyleBackColor = true;
+            // 
+            // rbRef
+            // 
+            this.rbRef.AutoSize = true;
+            this.rbRef.Location = new System.Drawing.Point(50, 157);
+            this.rbRef.Name = "rbRef";
+            this.rbRef.Size = new System.Drawing.Size(75, 17);
+            this.rbRef.TabIndex = 7;
+            this.rbRef.TabStop = true;
+            this.rbRef.Text = "Reference";
+            this.rbRef.UseVisualStyleBackColor = true;
+            // 
             // btnAddCopy
             // 
             this.btnAddCopy.Location = new System.Drawing.Point(9, 236);
@@ -277,45 +299,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Book ID";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoutToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1062, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.logoutToolStripMenuItem.Text = "Logout";
-            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
-            // 
-            // rbRef
-            // 
-            this.rbRef.AutoSize = true;
-            this.rbRef.Location = new System.Drawing.Point(50, 157);
-            this.rbRef.Name = "rbRef";
-            this.rbRef.Size = new System.Drawing.Size(75, 17);
-            this.rbRef.TabIndex = 7;
-            this.rbRef.TabStop = true;
-            this.rbRef.Text = "Reference";
-            this.rbRef.UseVisualStyleBackColor = true;
-            // 
-            // rbBorrow
-            // 
-            this.rbBorrow.AutoSize = true;
-            this.rbBorrow.Location = new System.Drawing.Point(50, 193);
-            this.rbBorrow.Name = "rbBorrow";
-            this.rbBorrow.Size = new System.Drawing.Size(78, 17);
-            this.rbBorrow.TabIndex = 8;
-            this.rbBorrow.TabStop = true;
-            this.rbBorrow.Text = "Borrowable";
-            this.rbBorrow.UseVisualStyleBackColor = true;
-            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dgvBorrow);
@@ -358,6 +341,68 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Borrow";
+            // 
+            // labelStatus
+            // 
+            this.labelStatus.AutoSize = true;
+            this.labelStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStatus.Location = new System.Drawing.Point(95, 393);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(19, 20);
+            this.labelStatus.TabIndex = 13;
+            this.labelStatus.Text = "  ";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(12, 398);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(37, 13);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Status";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 187);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 13);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Return Date";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 135);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(66, 13);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Borrow Date";
+            // 
+            // dateReturn
+            // 
+            this.dateReturn.Location = new System.Drawing.Point(9, 203);
+            this.dateReturn.Name = "dateReturn";
+            this.dateReturn.Size = new System.Drawing.Size(200, 20);
+            this.dateReturn.TabIndex = 9;
+            // 
+            // dateBorrow
+            // 
+            this.dateBorrow.Location = new System.Drawing.Point(9, 151);
+            this.dateBorrow.Name = "dateBorrow";
+            this.dateBorrow.Size = new System.Drawing.Size(200, 20);
+            this.dateBorrow.TabIndex = 8;
+            // 
+            // btnBorrow
+            // 
+            this.btnBorrow.Enabled = false;
+            this.btnBorrow.Location = new System.Drawing.Point(9, 428);
+            this.btnBorrow.Name = "btnBorrow";
+            this.btnBorrow.Size = new System.Drawing.Size(233, 45);
+            this.btnBorrow.TabIndex = 7;
+            this.btnBorrow.Text = "Borrow";
+            this.btnBorrow.UseVisualStyleBackColor = true;
+            this.btnBorrow.Click += new System.EventHandler(this.btnBorrow_Click);
             // 
             // btnCheck
             // 
@@ -418,66 +463,22 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "User ID";
             // 
-            // btnBorrow
+            // menuStrip1
             // 
-            this.btnBorrow.Enabled = false;
-            this.btnBorrow.Location = new System.Drawing.Point(9, 428);
-            this.btnBorrow.Name = "btnBorrow";
-            this.btnBorrow.Size = new System.Drawing.Size(233, 45);
-            this.btnBorrow.TabIndex = 7;
-            this.btnBorrow.Text = "Borrow";
-            this.btnBorrow.UseVisualStyleBackColor = true;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1062, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // dateBorrow
+            // logoutToolStripMenuItem
             // 
-            this.dateBorrow.Location = new System.Drawing.Point(9, 151);
-            this.dateBorrow.Name = "dateBorrow";
-            this.dateBorrow.Size = new System.Drawing.Size(200, 20);
-            this.dateBorrow.TabIndex = 8;
-            // 
-            // dateReturn
-            // 
-            this.dateReturn.Location = new System.Drawing.Point(9, 203);
-            this.dateReturn.Name = "dateReturn";
-            this.dateReturn.Size = new System.Drawing.Size(200, 20);
-            this.dateReturn.TabIndex = 9;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 135);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(66, 13);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Borrow Date";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 187);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 13);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "Return Date";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 398);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(37, 13);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Status";
-            // 
-            // labelStatus
-            // 
-            this.labelStatus.AutoSize = true;
-            this.labelStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStatus.Location = new System.Drawing.Point(95, 393);
-            this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(19, 20);
-            this.labelStatus.TabIndex = 13;
-            this.labelStatus.Text = "  ";
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // LibrarianDashboard
             // 
@@ -499,12 +500,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCopy)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrow)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

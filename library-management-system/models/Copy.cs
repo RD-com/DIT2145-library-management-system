@@ -53,6 +53,27 @@ namespace library_management_system.models
             return affectedRows;
         }
 
+        public int Update()
+        {
+            var connection = Database.Instance.GetConnection();
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand("UPDATE [Copy] SET BookID = @bookID, Publisher = @publisher, Status = @status, Available = @available WHERE Id = @id", connection);
+
+            cmd.Parameters.AddWithValue("@bookID", BookID);
+            cmd.Parameters.AddWithValue("@publisher", Publisher);
+            cmd.Parameters.AddWithValue("@status", Status);
+            cmd.Parameters.AddWithValue("@available", Available);
+            cmd.Parameters.AddWithValue("@id", Id);
+
+            int affectedRows = cmd.ExecuteNonQuery();
+
+            connection.Close();
+
+            return affectedRows;
+        }
+
+
         public static Copy Get(int id)
         {
             var connection = Database.Instance.GetConnection();
@@ -107,10 +128,6 @@ namespace library_management_system.models
             return copies;
         }
 
-        /// <summary>
-        ///  impliment get borrowables (return list of borrowable coplies if available)
-        /// </summary>
-        /// <returns></returns>
 
         public static List<Copy> GetBorrowable(int bookId)
         {

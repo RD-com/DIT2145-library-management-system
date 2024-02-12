@@ -14,8 +14,9 @@ namespace library_management_system
 {
     public partial class LibrarianDashboard : Form
     {
-        bool borrowStatus = false;
+        bool borrowable = false;
         Borrow borrow = null;
+        Copy borrowableCopy = null;
 
         public LibrarianDashboard()
         {
@@ -105,15 +106,39 @@ namespace library_management_system
             var borrows = Borrow.GetNotReturned(userId);
             var borrowableCopies = Copy.GetBorrowable(bookId);
 
-            if (borrows.Count < 5 && borrowableCopies.Count > 0)
-            {
-                labelStatus.Text = "OK";
-                btnBorrow.Enabled = true;
-            }
-            else
+            if (!(borrows.Count < 5 && borrowableCopies.Count > 0))
             {
                 labelStatus.Text = "Rejected";
                 btnBorrow.Enabled = false;
+                borrowable = false;
+                return;
+            }
+
+            labelStatus.Text = "OK";
+            btnBorrow.Enabled = true;
+
+            borrowableCopy = borrowableCopies[0];
+            int copyId = borrowableCopy.Id;
+
+            borrow = new Borrow(userId, bookId,copyId, borrowDate, returnDate, false, remarks);
+            borrowable = true;
+        }
+
+        void BorrowBook()
+        {
+            if(borrowable)
+            {
+                borrowableCopy.Available = false;
+                borrowableCopy.Update();
+                int status = borrow.Save();
+                if(status > 0)
+                {
+                    MessageBox.Show("Book borrowed");
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
             }
         }
 
@@ -146,12 +171,18 @@ namespace library_management_system
         {
             CheckBorrow();
         }
-        #endregion
 
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
             if (e.TabPageIndex == 1)
                 RetriveCopies();
         }
+
+        private void btnBorrow_Click(object sender, EventArgs e)
+        {
+            BorrowBook();
+        }
+
+        #endregion
     }
 }
