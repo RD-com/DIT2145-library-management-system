@@ -25,13 +25,12 @@ namespace library_management_system
             DataSet ds = User.get_user(nic, password);
             if (ds.Tables[0].Rows.Count > 0)
             {
+                int userId = ds.Tables[0].Rows[0].Field<int>("Id");
                 string name = ds.Tables[0].Rows[0].Field<string>("Name");
                 string role = ds.Tables[0].Rows[0].Field<string>("Role");
                 string gender = ds.Tables[0].Rows[0].Field<string>("Gender");
 
-                btnLogin.Text = role;
-
-                AuthContext.Instance.Login(name, nic, role, gender, this);
+                AuthContext.Instance.Login(userId, name, nic, role, gender, this);
             }
             else
             {

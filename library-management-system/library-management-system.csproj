@@ -84,6 +84,14 @@
     <Compile Include="models\Book.cs" />
     <Compile Include="models\Borrow.cs" />
     <Compile Include="models\Copy.cs" />
+    <Compile Include="models\Message.cs" />
+    <Compile Include="models\Reply.cs" />
+    <Compile Include="SendReplyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SendReplyForm.Designer.cs">
+      <DependentUpon>SendReplyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LibrarianDashboard.resx">
       <DependentUpon>LibrarianDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SendReplyForm.resx">
+      <DependentUpon>SendReplyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

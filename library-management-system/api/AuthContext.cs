@@ -11,6 +11,7 @@ namespace library_management_system.api
     {
         private static AuthContext instance;
 
+        public int userID;
         public string name;
         public string nic;
         public string role;
@@ -36,8 +37,9 @@ namespace library_management_system.api
 
         }
 
-        public void Login(string name, string nic, string role, string gender, LoginForm form)
+        public void Login(int userId, string name, string nic, string role, string gender, LoginForm form)
         {
+            this.userID = userId;
             this.name = name;
             this.nic = nic;
             this.role = role;
@@ -54,7 +56,9 @@ namespace library_management_system.api
             }
             else
             {
-                MessageBox.Show("You are not an admin");
+                dashboard = new BorrowerDashboard();
+                dashboard.Show();   
+                loginForm.Hide();
             }
         }
 

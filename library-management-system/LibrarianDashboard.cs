@@ -18,6 +18,9 @@ namespace library_management_system
         Borrow borrow = null;
         Copy borrowableCopy = null;
 
+
+        DataSet messages = null;
+
         public LibrarianDashboard()
         {
             InitializeComponent();
@@ -40,6 +43,12 @@ namespace library_management_system
         {
             DataSet borrows = Borrow.get_borrows();
             dgvBorrow.DataSource = borrows.Tables[0];
+        }
+
+        void RetriveMessages()
+        {
+            messages = library_management_system.models.Message.get_messages();
+            dgvMessage.DataSource = messages.Tables[0];
         }
 
         void AddBook(string title, string isbn, string authors)
@@ -177,7 +186,14 @@ namespace library_management_system
  
         }
 
-        #region Button Events
+        void SendReply(int messageId, int userId)
+        {
+            SendReplyForm form = new SendReplyForm(messageId, userId);
+            form.ShowDialog();
+        }
+
+
+        #region Events
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -213,6 +229,8 @@ namespace library_management_system
                 RetriveCopies();
             else if(e.TabPageIndex == 2)
                 RetriveBorrows();
+            else if(e.TabPageIndex == 3)
+                RetriveMessages();
         }
 
         private void btnBorrow_Click(object sender, EventArgs e)
@@ -226,6 +244,20 @@ namespace library_management_system
             ReturnBook();
         }
 
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtMessageTitle.Text = messages.Tables[0].Rows[e.RowIndex].Field<string>("Title");
+            txtMessageDescription.Text = messages.Tables[0].Rows[e.RowIndex].Field<string>("Description");
+        }
+
+        private void dgvMessage_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var messageId = messages.Tables[0].Rows[e.RowIndex].Field<int>("Id");
+            var userId = messages.Tables[0].Rows[e.RowIndex].Field<int>("UserID");
+
+            SendReply(messageId, userId);
+        }
         #endregion
     }
 }
