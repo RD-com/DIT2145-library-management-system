@@ -51,7 +51,6 @@
             this.txtBookID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dgvBorrow = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.labelStatus = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -69,6 +68,15 @@
             this.label9 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnReturn = new System.Windows.Forms.Button();
+            this.txtReturnBookID = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtReturnUserID = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.dgvBorrow = new System.Windows.Forms.DataGridView();
+            this.txtReturnBorrowID = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
@@ -77,9 +85,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCopy)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBorrow)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBorrow)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -302,6 +311,7 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dgvBorrow);
+            this.tabPage3.Controls.Add(this.groupBox4);
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -310,14 +320,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Borrow";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // dgvBorrow
-            // 
-            this.dgvBorrow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBorrow.Location = new System.Drawing.Point(260, 6);
-            this.dgvBorrow.Name = "dgvBorrow";
-            this.dgvBorrow.Size = new System.Drawing.Size(764, 479);
-            this.dgvBorrow.TabIndex = 3;
             // 
             // groupBox3
             // 
@@ -480,6 +482,88 @@
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.txtReturnBorrowID);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.btnReturn);
+            this.groupBox4.Controls.Add(this.txtReturnBookID);
+            this.groupBox4.Controls.Add(this.label18);
+            this.groupBox4.Controls.Add(this.txtReturnUserID);
+            this.groupBox4.Controls.Add(this.label19);
+            this.groupBox4.Location = new System.Drawing.Point(260, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(248, 479);
+            this.groupBox4.TabIndex = 14;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Return";
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.Enabled = false;
+            this.btnReturn.Location = new System.Drawing.Point(9, 190);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(233, 45);
+            this.btnReturn.TabIndex = 7;
+            this.btnReturn.Text = "Return";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            // 
+            // txtReturnBookID
+            // 
+            this.txtReturnBookID.Location = new System.Drawing.Point(9, 150);
+            this.txtReturnBookID.Name = "txtReturnBookID";
+            this.txtReturnBookID.Size = new System.Drawing.Size(233, 20);
+            this.txtReturnBookID.TabIndex = 3;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 134);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(46, 13);
+            this.label18.TabIndex = 2;
+            this.label18.Text = "Book ID";
+            // 
+            // txtReturnUserID
+            // 
+            this.txtReturnUserID.Location = new System.Drawing.Point(9, 101);
+            this.txtReturnUserID.Name = "txtReturnUserID";
+            this.txtReturnUserID.Size = new System.Drawing.Size(233, 20);
+            this.txtReturnUserID.TabIndex = 1;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 85);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(43, 13);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "User ID";
+            // 
+            // dgvBorrow
+            // 
+            this.dgvBorrow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBorrow.Location = new System.Drawing.Point(515, 7);
+            this.dgvBorrow.Name = "dgvBorrow";
+            this.dgvBorrow.Size = new System.Drawing.Size(509, 478);
+            this.dgvBorrow.TabIndex = 15;
+            // 
+            // txtReturnBorrowID
+            // 
+            this.txtReturnBorrowID.Location = new System.Drawing.Point(9, 52);
+            this.txtReturnBorrowID.Name = "txtReturnBorrowID";
+            this.txtReturnBorrowID.Size = new System.Drawing.Size(233, 20);
+            this.txtReturnBorrowID.TabIndex = 9;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 36);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(54, 13);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "Borrow ID";
+            // 
             // LibrarianDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,11 +585,13 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBorrow)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBorrow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -538,7 +624,6 @@
         private System.Windows.Forms.RadioButton rbBorrow;
         private System.Windows.Forms.RadioButton rbRef;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataGridView dgvBorrow;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -554,5 +639,14 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.TextBox txtReturnBookID;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtReturnUserID;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.DataGridView dgvBorrow;
+        private System.Windows.Forms.TextBox txtReturnBorrowID;
+        private System.Windows.Forms.Label label13;
     }
 }
